@@ -1,0 +1,147 @@
+1. Total Number of employees
+    select count(*) from emp;
+
+2.Total number of departments
+   select count(*) from dept;
+
+3.all the employees
+  select * from emp;
+
+4.all the departments
+  select * from dept;
+
+5.total salary paid for all employees
+  select sum(sal) from emp;
+
+6.total commission paid for all employees
+   select sum(comm) from emp;
+
+7.which job title of the employees get commission paid
+select  * 
+from emp
+where comm >=0;
+
+8.System date
+select sysdate, to_char(sysdate,'DD/MM/YYYY')
+from dual;
+
+9.Averege salary paid to all employees
+select avg(sal) from emp;
+
+10.how many employees are there in each department
+select deptno, count(*)
+from emp
+group by deptno
+order by deptno ;
+
+11.Total salary of employee in each department
+select deptno, sum(sal)
+from emp
+group by deptno
+order by deptno;
+
+12.How many employees are there under each job title
+select job, count(*)
+from emp
+group by job;
+
+13.Averege salary paid  for each job title
+select job, avg(sal)
+from emp
+group by job;
+
+14.hire day,month,and year of each employees
+select empno, ename, hiredate, to_char(hiredate,'DD'),
+to_char(hiredate,'MON'), to_char(hiredate,'YYYY')
+from emp;
+
+15.Sort the employees department wise
+select empno,ename,deptno
+from emp
+order by deptno asc;
+
+16.Sort the employees based on their job titles
+select empno,ename,job
+from emp
+order by job asc;
+
+17.Sort the employees based on descending order of their salaries
+select empno,ename,sal
+from emp
+order by sal desc;
+
+18. Sort the employee ascending order of their department and decending order of their salary.
+select empno,ename,deptno,sal
+from emp 
+order by deptno asc,sal desc;
+
+19.how many employees have their name with 6 charecters.
+select count(*) from emp
+where length(ename)=6;
+
+20.maximum and minimum salary paid
+select max(sal),min(sal) from emp;
+
+21.Maximum ,Minimum,average and sum of salary paid under each dapartment
+select deptno, max(sal) as Maximum_salary,
+               min(sal) as Minimum_Salary,
+               avg(sal) as Average_Salary,
+               sum(sal) as Sum_of_Salary
+from emp
+group by deptno
+order by deptno ;
+
+22.Sort the employees base on hire date
+select empno,ename,hiredate
+from emp
+order by hiredate asc;
+
+23.Employee who join latest
+select * from emp
+where hiredate = (select max(hiredate) from emp);
+
+24.Who is the oldest employee in the orgnization based on hire date
+select * from emp
+where hiredate = (select min(hiredate) from emp);
+
+25.Sort the employee based on their hire year(decending) and department (ascending).
+select empno,ename,hiredate,to_char(hiredate,'YYYY'),deptno from emp
+order by to_char(hiredate,'YYYY') desc , deptno asc;
+
+26.Employee who get salaries greater than equal to the average salary of employees.
+select empno,ename,sal from emp
+where sal>=(select avg(sal) from emp);
+
+27.Employee who get salaries greater than equal to the average salary of employees.
+select empno,ename,sal from emp
+where sal<=(select avg(sal) from emp);
+
+28.Employees get salaries between 2000 and 4000.
+select empno,ename,sal
+ from emp
+where sal>2000 and sal<4000;
+
+another way
+
+select empno, ename, sal 
+from emp 
+where sal between 2000 and 4000;
+
+29.which employee get the highest and lowest salary.
+select * from emp
+where sal = (select max(sal) from emp)
+union
+select * from emp
+where sal=(select min(sal) from emp);
+
+30.we need to celebrate the joining month of the employees. we plan to buy a gift for each of them. how many gift for each of them . how many gift do i need to buy for next month
+
+
+
+
+
+
+
+
+
+
