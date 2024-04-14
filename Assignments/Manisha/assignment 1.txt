@@ -1,0 +1,143 @@
+1)select count(*)
+  from dept;
+
+2)select count(*)
+  from emp;
+
+3)select ename 
+  from emp;
+
+4)select dname
+  from dept;
+
+5)select sum(sal) 
+ from emp;
+
+6)select sum(comm)
+  from emp;
+
+7)select job,comm 
+  from emp
+  where comm is not null
+
+8)select sysdate from dual;
+
+9)select avg(sal)
+  from emp;
+
+10)select dept.DNAME,count(*) as count
+   from emp 
+   full outer join dept on emp.DEPTNO = dept.DEPTNO 
+   group by dept.DNAME
+
+11)select dept.DNAME,sum(sal)
+   from emp 
+   full outer join dept on emp.DEPTNO = dept.DEPTNO 
+   group by dept.DNAME
+
+12)select job as job_title, count(*) 
+   from emp
+   group by job;
+
+13)select job as job_title, avg(sal)
+   from emp
+   group by job;
+
+14)select ename,to_char(hiredate,'MM-Day-YYYY') 
+   from emp;
+
+15)select e.ename,d.dname 
+    from emp e
+    full outer join dept d on e.deptno=d.deptno 
+    order by dname;
+
+16)select job as ename,job_title
+   from emp
+   order by job;
+
+17)select ename,sal as salary
+   from emp
+   order by sal desc;
+
+18)select ename,d.dname,sal 
+    from emp e
+    full outer join dept d on e.deptno=d.deptno 
+    order by dname desc,sal;
+
+19)Select count(ename)
+   from emp
+   where length(ename)=6;
+
+20)select min(sal),max(sal) from emp;
+
+21)select d.dname,min(sal),max(sal),avg(sal),sum(sal)
+    from emp e
+    full outer join dept d on e.deptno=d.deptno 
+    group by dname;
+
+22)select ename,hiredate
+   from emp
+   order by hiredate;
+
+23)select ename
+    from emp 
+    where hiredate = (select max(hiredate) from emp);
+
+24)select ename 
+    from emp 
+    where hiredate = (select min(hiredate) from emp);
+
+25)select e.ename,hiredate,d.dname
+    from emp e
+    full outer join dept d on e.deptno=d.deptno 
+    order by to_char(hiredate,'YYYY') desc,d.dname;
+
+26)select ename
+   from emp
+   where sal >= (select avg(sal) from emp);
+
+27)select ename
+   from emp
+   where sal <= (select avg(sal) from emp);
+
+28)select ename
+    from emp
+    where sal between 2000 and 4000;
+
+29)select ename 
+    from emp where sal=(select max(sal) from emp) union select ename from emp where sal=(select min(sal) from emp);
+
+30)select count(*) 
+    from emp 
+    where to_char(hiredate, 'mm') = to_char(add_months(current_date, 1), 'mm');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
